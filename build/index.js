@@ -1,17 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CsvFileReader_1 = require("./CsvFileReader");
-var reader = new CsvFileReader_1.CsvFileReader('football.csv');
-reader.read();
-// enum = enumeration
-var MatchResult;
-(function (MatchResult) {
-    MatchResult["HomeWin"] = "H";
-    MatchResult["AwayWin"] = "A";
-    MatchResult["Draw"] = "D";
-})(MatchResult || (MatchResult = {}));
+var MatchReader_1 = require("./MatchReader");
+//Create an object that satisfies the 'DataReader' interface
+var csvFileReader = new CsvFileReader_1.CsvFileReader('football.csv');
+//Create an instance of MatchReader and pass in something satisfying the 'dataReader' interface
+var matchReader = new MatchReader_1.MatchReader(csvFileReader);
+matchReader.load();
 var manUnitedWins = 0;
-for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
+for (var _i = 0, _a = matchReader.matches; _i < _a.length; _i++) {
     var match = _a[_i];
     if (match[1] === 'Man United' && match[5] === 'H') {
         manUnitedWins++;

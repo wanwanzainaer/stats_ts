@@ -1,16 +1,16 @@
 import { CsvFileReader } from './CsvFileReader';
-const reader = new CsvFileReader('football.csv');
-reader.read();
-// enum = enumeration
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
+import { MatchReader } from './MatchReader';
+
+//Create an object that satisfies the 'DataReader' interface
+const csvFileReader = new CsvFileReader('football.csv');
+
+//Create an instance of MatchReader and pass in something satisfying the 'dataReader' interface
+const matchReader = new MatchReader(csvFileReader);
+matchReader.load();
 
 let manUnitedWins = 0;
 
-for (let match of reader.data) {
+for (let match of matchReader.matches) {
   if (match[1] === 'Man United' && match[5] === 'H') {
     manUnitedWins++;
   } else if (match[2] === 'Man United' && match[5] === 'A') {
