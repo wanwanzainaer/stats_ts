@@ -18,3 +18,5 @@ for (let match of matchReader.matches) {
   }
 }
 console.log(`Man United won ${manUnitedWins} games`);
+
+// the comment for the github commit
