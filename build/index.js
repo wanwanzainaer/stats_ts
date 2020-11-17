@@ -18,3 +18,4 @@ for (var _i = 0, _a = matchReader.matches; _i < _a.length; _i++) {
     }
 }
 console.log("Man United won " + manUnitedWins + " games");
+// the comment for the github commit
